@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,6 +30,7 @@ public class EmployeeInfo {
     private UserInfo employeeCount;
     private String employeeNote;
     private boolean employeeIsdel=false;
+
 
 }
 

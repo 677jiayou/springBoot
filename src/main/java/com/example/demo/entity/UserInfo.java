@@ -3,11 +3,9 @@ package com.example.demo.entity;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,4 +20,6 @@ public class UserInfo {
     private String note;
     @CreatedDate
     private Date registerDate;
+    @ManyToMany(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
+    private List<SysRole> sysroleList;
 }
