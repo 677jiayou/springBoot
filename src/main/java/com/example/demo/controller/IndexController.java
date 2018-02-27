@@ -15,10 +15,22 @@ public class IndexController {
         return "index";
     }
 
-//    @GetMapping("/hello")
-//    @ResponseBody
-//    @PreAuthorize("hasAnyRole('admin')")
-//    public String hello(){
-//        return "你好";
-//    }
+    @GetMapping("/hello")
+    @ResponseBody
+    @PreAuthorize("hasAnyRole('管理员')")
+    public String hello(){
+        return "您好,管理员！";
+    }
+
+    @GetMapping("/hello1")
+    @ResponseBody
+    @PreAuthorize("hasAnyRole('游客')")
+    public String hello1(){
+        return "您好,游客！";
+    }
+    @GetMapping("/403")
+    @ResponseBody
+    public String access(){
+        return "对不起，您没有权限！";
+    }
 }

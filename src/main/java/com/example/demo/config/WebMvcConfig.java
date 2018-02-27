@@ -16,11 +16,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
     @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
+        //也可以在service中新建一个类实现此接口（EmbeddedServletContainerCustomizer），然后重写方法，最后在当前类中注入
+        //改service实现类
         return new EmbeddedServletContainerCustomizer() {
             @Override
             public void customize(ConfigurableEmbeddedServletContainer container) {
                 ErrorPage error403Page = new ErrorPage(HttpStatus.FORBIDDEN, "/403");
                 container.addErrorPages(error403Page);
+
             }
         };
     }

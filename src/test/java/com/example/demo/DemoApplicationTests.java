@@ -31,22 +31,28 @@ public class DemoApplicationTests {
 //    @Transactional
     public void contextLoads() {
         SysRole sysRole=new SysRole();
-        sysRole.setName("管理员");
+        sysRole.setName("游客");
+        sysRoleRepository.save(sysRole);
 
         UserInfo userInfo=new UserInfo();
-        userInfo.setUserName("madi");
+        userInfo.setUserName("liukang");
         userInfo.setPassWord("1234");
-//        userInfo.setSysRole(sysRole);
+        List<SysRole>  roles=new ArrayList<SysRole>();
+        roles.add(sysRole);
+        userInfo.setSysroleList(roles);
+        userInfoRepository.save(userInfo);
 
 
         Department department=new Department();
         department.setDepartmentNumber("1000");
         department.setName("急诊科");
+        departmentRepository.save(department);
 
         Position position=new Position();
         position.setPositionNumber("2000");
         position.setLevel("部门主任");
         position.setName("主任医师");
+        positionRepository.save(position);
 
 
 
@@ -60,19 +66,10 @@ public class DemoApplicationTests {
         employeeInfo.setEmployeeName("马迪");
         employeeInfo.setEmployeeNote("nothing");
         employeeInfo.setEmployeePhone("13310971217");
-        employeeInfo.setEmployeeNumber("1001");
+        employeeInfo.setEmployeeNumber("1004");
         employeeInfo.setEmployeeWorktype("主席");
         employeeInfo.setEmployeeDepartment(department);
         employeeInfo.setEmployeePosition(position);
-
-
-
-
-
-        userInfoRepository.save(userInfo);
-        sysRoleRepository.save(sysRole);
-        departmentRepository.save(department);
-        positionRepository.save(position);
         employeeInfoRepository.save(employeeInfo);
     }
 //    @Test
@@ -88,7 +85,7 @@ public class DemoApplicationTests {
     public void saveNewEmployee(){
         UserInfo userInfo=new UserInfo();
         userInfo.setUserName("lijiaqi");
-        userInfo.setPassWord("12345");
+        userInfo.setPassWord("1234");
 
         EmployeeInfo employeeInfo=new EmployeeInfo();
         employeeInfo.setEmployeeAddress("陕西省西安市");
@@ -100,7 +97,7 @@ public class DemoApplicationTests {
         employeeInfo.setEmployeeName("李佳奇");
         employeeInfo.setEmployeeNote("nothing");
         employeeInfo.setEmployeePhone("13310971217");
-        employeeInfo.setEmployeeNumber("1003");
+        employeeInfo.setEmployeeNumber("1004");
         employeeInfo.setEmployeeWorktype("主席");
         employeeInfo.setEmployeeDepartment(departmentRepository.findByName("急诊科"));
         employeeInfo.setEmployeePosition(positionRepository.findByName("主任医师"));
