@@ -40,7 +40,8 @@
                 <p class="m-t-md">
                     <font color="#6C6C6C">欢迎登录HR医院人事管理系统</font>
                 </p>
-                <p style="color: red" id="np-warning" align="center"></p>
+                <p th:if="${param.logout}" class="bg-warning" style="color: red"  align="center">*已注销!</p>
+                <p th:if="${param.error}" class="bg-danger" style="color: red"  align="center">*用户名或密码错误，请重试!</p>
                 <input type="text" class="form-control uname" placeholder="用户名" name="username" id="login_username"/>
                 <input type="password" class="form-control pword m-b" placeholder="密码" name="password" id="login_password"/>
                 <p></p>
